@@ -9,6 +9,8 @@ ENV MAGENTO_VERSION 2.3.1
 ENV INSTALL_DIR /var/www/html
 ENV COMPOSER_HOME /var/www/.composer/
 
+RUN rm -rf /etc/apt/sources.list.d/* && apt clean
+
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer
 COPY ./auth.json $COMPOSER_HOME
